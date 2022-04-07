@@ -1,17 +1,19 @@
 class ABVM {
     constructor(src) {
         this.src = src;
-        this.cmds = [...(src.split('\n').filter((s)=>s.search(/^\s*$/)<0).map((s)=>s.replace(/\s+/g, '')))];
+        this.cmds = src.split('\n').filter((s)=>s.search(/(^\s*$)|(^\s*(#|\/\/).*$)/)<0).map((s)=>s.replace(/\s+/g, ''));
         this.completed = true;
+        this.step = 0;
     }
     cin(input) {
         this.in = input;
         this.completed = false;
+        this.step = 0;
     }
     next() {
-        if (this.completed === true) {
-            return true;
-        }
+        this.step += 1;
+        if (this.step > 255) { return true; }
+        if (this.completed === true) { return true; }
         else {
             for (const cmd of this.cmds) {
                 const [left, right] = cmd.split('=');
@@ -38,11 +40,13 @@ class ABVM {
 
 (function debug() {
     const abvm = new ABVM(`
-    aaa = aa
-    aa = 
+    ab = 
+    ba = 
+    bb = b
+    aa = a
     `);
     console.log(abvm);
-    abvm.cin('abaaaacd');
+    abvm.cin('abbbabababababaabaaaba');
     while (!abvm.next()) {
         console.log(abvm.cout());
     }
