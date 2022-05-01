@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Consolas', monospace;
+    background-color: #222;
+    color: #CFC;
+    box-sizing: content-box;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    height: 10px;
+    background-color: #333;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #bfb;
+    border-radius: 3px;
+}
+
+header {
+    padding: 10px 30px;
+    border-bottom: 1px solid gray;
+    height: 1rem;
+    flex: 0;
+}
+footer {
+    padding: 10px 30px;
+    border-top: 1px solid gray;
+    height: 1rem;
+    flex: 0;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 42px - 2rem);
+}
+
+.container-side {
+    flex: 1;
+}
+.container-side-left {
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+.problem-description {
+    padding: 1rem 2rem;
+}
+.problem-description > p {
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+    margin: 0.6rem 0;
+}
+.eg {
+    padding: 10px;
+    border: 1px solid #666;
+    background-color: #333;
+    color: #CCC;
+    margin: 1rem 0;
+}
+.eg > * {
+    background-color: #333;
+}
+.eg > p {
+    font-size: 0.85rem;
+}
+
+.container-side-right {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-area {
+    flex: 5;
+    border-top: 1px solid #6c6;
+    border-bottom: 1px solid #6c6;
+    overflow-y: auto;
+}
+.padding-area {
+    padding: 1rem;
+}
+#code-area {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    font-size: 1.2rem;
+    border: none;
+    background-color: #333;
+}
+#code-area:focus {
+    outline: none;
+}
+
+.test-area {
+    flex: 3;
+}

@@ -1,0 +1,80 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A = B, but open-source.</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <header>
+        A = B, but open-source.
+    </header>
+    <div class="container">
+        <div class="container-side container-side-left">
+            <div class="problem-description">
+                <h3>P1. 众数</h3>
+                <br>
+                <p>输入一个仅包含 'a,b,c' 的字符串。</p>
+                <p>输出其中 数目最多的字母。</p>
+                <p>如果有多个字母数目相同，则输出空字符串。</p>
+                <div class="eg">
+                    <p>输入: "aabcbcc"</p>
+                    <p>输出: "c"</p>
+                    <p>理由："c" 是出现次数最多的字符。</p>
+                </div>
+                <div class="eg">
+                    <p>输入: "aaabbb"</p>
+                    <p>输出: ""</p>
+                    <p>理由："a", "b" 都是出现次数最多的字符，所以输出为空。</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-side container-side-right">
+            <div class="input-area padding-area">
+                <textarea name="code" id="code-area" spellcheck="false"></textarea>
+            </div>
+            <div class="test-area padding-area">
+                <input type="text" name="example">
+                <ul class="step-area"></ul>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <select name="problems" id="problem-select">
+            <option value="1">Problem 1</option>
+            <option value="2">Problem 2</option>
+            <option value="3">Problem 3</option>
+        </select>
+        <button onclick="test()">测试</button>
+        <button onclick="">提交</button>
+    </footer>
+</body>
+
+<script src="./aisb.js"></script>
+<script>
+const $ = document.querySelector.bind(document);
+
+function test() {
+    const code = $('#code-area').value;
+    const example = $('input[name="example"]').value;
+    const stepArea = $('.step-area');
+    stepArea.innerHTML = '';
+    
+    const abvm = new ABVM(code);
+    abvm.cin(example);
+    const results = [];
+    while (!abvm.next()) {
+        results.push(abvm.cout());
+    }
+    
+    for (const val of results) {
+        const li = document.createElement('li');
+        li.innerText = val;
+        stepArea.appendChild(li);
+    }
+}
+</script>
+</html>

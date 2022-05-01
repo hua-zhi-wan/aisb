@@ -37,17 +37,15 @@ class ABVM {
     }
 }
 
-
-(function debug() {
-    const abvm = new ABVM(`
-    ab = 
-    ba = 
-    bb = b
-    aa = a
-    `);
-    console.log(abvm);
-    abvm.cin('abbbabababababaabaaaba');
-    while (!abvm.next()) {
-        console.log(abvm.cout());
-    }
-})()
+// (function debug() {
+//     const abvm = new ABVM(`
+//     i0 = 0ii
+//     1 = 0i
+//     0 = 
+//     `);
+//     console.log(abvm);
+//     abvm.cin('101');
+//     while (!abvm.next()) {
+//         console.log(abvm.cout());
+//     }
+// })()
